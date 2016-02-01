@@ -16,6 +16,8 @@ module.exports = function(req, res, next) {
         } 
 
         var data = JSON.parse(body);
+        data.results[0] = data.results[0] || {};
+        data.results[0].geometry.location = data.results[0].geometry.location || {};
         req.results = data.results[0].geometry.location;
         next();
     });
